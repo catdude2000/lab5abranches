@@ -55,7 +55,7 @@ function sumAndMultiply(a, b, c) {
   let sumTotal = sum(a, sum(b, c)[0])[0];
   let multyTotal = multiply(a, multiply(b, c)[0])[0];
 
-  const sumAndMulty = [sumTotal, multyTotal, a + ' and ' + b + ' and ' + c + ' sum to ' + sumTotal + '.', 'The product of 4 and 7 and 5 is ' + multyTotal + '.'];
+  const sumAndMulty = [sumTotal, multyTotal, a + ' and ' + b + ' and ' + c + ' sum to ' + sumTotal + '.', 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multyTotal + '.'];
   return sumAndMulty;
 }
 
@@ -127,10 +127,26 @@ Test this function by hand in the console to get it working, and when you think 
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+  console.log('what is this?', dynamicArray);
+  let firstElement = 1;
+  for (let i = 0; i < dynamicArray.length; i++){
+    // console.log('i: ', i);
+    firstElement = multiply(firstElement, dynamicArray[i])[0];
+  }
+  console.log(firstElement);
+  let stringMessage = 'The numbers ';
+  for(let i = 0; i < dynamicArray.length; i++){
+    stringMessage = stringMessage + dynamicArray[i];
+    if(i < dynamicArray.length - 1){
+      stringMessage = stringMessage + ',';
+    }
+  }
+  console.log(stringMessage);
+  stringMessage += ' have a product of ' + firstElement + '.';
+  return [firstElement, stringMessage];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
